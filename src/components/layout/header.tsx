@@ -4,13 +4,8 @@ import { AnimatePresence, motion } from "framer-motion"
 import Link from "next/link"
 import { useState } from "react"
 
+import { navConfig } from "@/config/nav"
 import { siteConfig } from "@/config/site"
-
-const navItems = {
-  collections: { title: "Collections", href: "/collections" },
-  mission: { title: "Our mission", href: "/mission" },
-  events: { title: "Events", href: "/events" }
-}
 
 const linkStyles =
   "rounded-full border border-bone p-[13px] px-10 text-bone font-medium text-sm transition-colors hover:bg-bone hover:text-heavyMetal"
@@ -28,17 +23,19 @@ export default function Header() {
         <div className="border-bone flex items-center justify-between gap-[2px] rounded-full border p-[3px]">
           <div className="flex w-full gap-1">
             <Link
-              href={siteConfig.path}
+              href={siteConfig.href}
               className={`${linkStyles} bg-birch !border-birch w-full text-center lg:max-w-sm`}
             >
               {siteConfig.name}
             </Link>
             <div className="hidden w-full gap-[2px] lg:flex">
-              {Object.entries(navItems).map(([key, { title, href }]) => (
-                <Link key={key} href={href} className={linkStyles}>
-                  {title}
-                </Link>
-              ))}
+              {Object.entries(navConfig.header).map(
+                ([key, { title, href }]) => (
+                  <Link key={key} href={href || ""} className={linkStyles}>
+                    {title}
+                  </Link>
+                )
+              )}
             </div>
           </div>
           <Link href="/contact" className={`${linkStyles} hidden md:block`}>
@@ -62,10 +59,10 @@ export default function Header() {
             exit={{ opacity: 0, height: 0 }}
             className="border-bone mt-2 overflow-hidden rounded-3xl border md:hidden"
           >
-            {Object.entries(navItems).map(([key, { title, href }]) => (
+            {Object.entries(navConfig.header).map(([key, { title, href }]) => (
               <Link
                 key={key}
-                href={href}
+                href={href || ""}
                 className="text-bone hover:bg-bone hover:text-heavyMetal block p-4 font-medium transition-colors"
                 onClick={() => setIsOpen(false)}
               >
