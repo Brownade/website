@@ -3,7 +3,7 @@
 import { useEffect } from "react"
 
 import { UseRefContext } from "@/hooks/use-context"
-import UseOnScreen from "@/hooks/use-onscreen"
+import UseObserver from "@/hooks/use-observer"
 
 interface RefProps {
   rootMargin?: string
@@ -11,7 +11,7 @@ interface RefProps {
 }
 
 export function Ref(props: RefProps) {
-  const [ref, isInteresting] = UseOnScreen({
+  const [ref, isInteresting] = UseObserver({
     rootMargin: props.rootMargin || "0px",
     threshold: props.thereshold || 0
   })
