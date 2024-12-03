@@ -2,10 +2,10 @@
 
 import { useEffect, useRef, useState } from "react"
 
-type UseOnScreenOptions = IntersectionObserverInit
+type UseObserverOptions = IntersectionObserverInit
 
-export default function UseOnScreen(
-  options: UseOnScreenOptions = {}
+export default function UseObserver(
+  options: UseObserverOptions = {}
 ): [React.RefObject<HTMLDivElement>, boolean] {
   const [isIntersecting, setIsIntersecting] = useState<boolean>(false)
   const ref = useRef<HTMLDivElement | null>(null)

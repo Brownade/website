@@ -17,8 +17,11 @@ const config: Config = {
     },
     extend: {
       colors: {
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
+        background: "var(--background)",
+        foreground: "var(--foreground)",
+        // FYI: This commented out line is an template from the original shadcn/tailwindcss-config
+        // background: "hsl(var(--background))",
+        // foreground: "hsl(var(--foreground))",
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))"
@@ -56,7 +59,19 @@ const config: Config = {
           "3": "hsl(var(--chart-3))",
           "4": "hsl(var(--chart-4))",
           "5": "hsl(var(--chart-5))"
-        }
+        },
+        paleOyster: "var(--pale-oyster)",
+        heavyMetal: "var(--heavy-metal)",
+        birch: "var(--birch)",
+        zeus: "var(--zeus)",
+        bone: "var(--bone)",
+        saddle: "var(--saddle)",
+        kabul: "var(--kabul)",
+        vanilla: "var(--vanilla)",
+        tobaccoBrown: "var(--tobacco-brown)",
+        quincy: "var(--quincy)",
+        fiord: "var(--fiord)",
+        clayAsh: "var(--clay-ash)"
       },
       borderRadius: {
         lg: "var(--radius)",

@@ -14,9 +14,11 @@ export default function LoadingScreen() {
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5 }}
       >
-        <div className="font-museo-sans text-4xl font-bold">Brownade</div>
+        <div className="font-museo-sans text-bone text-4xl font-bold">
+          Brownade
+        </div>
         <motion.div
-          className="absolute -bottom-8 left-0 right-0 h-1 bg-white"
+          className="bg-bone absolute -bottom-8 left-0 right-0 h-1"
           initial={{ scaleX: 0 }}
           animate={{ scaleX: 1 }}
           transition={{ duration: 1.5, delay: 0.5 }}

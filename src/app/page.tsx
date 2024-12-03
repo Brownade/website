@@ -17,7 +17,7 @@ export default function Home() {
     <>
       <AnimatePresence>{loading && <LoadingScreen />}</AnimatePresence>
 
-      {!loading && <p>Home</p>}
+      {!loading && <div className="">Home</div>}
     </>
   )
 }

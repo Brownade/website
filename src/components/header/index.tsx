@@ -1,13 +1,19 @@
 "use client"
 
 import { AnimatePresence, motion } from "framer-motion"
-import { Menu, X } from "lucide-react"
 import Link from "next/link"
 import { useState } from "react"
 
-import { Button } from "@/components/ui/button"
-import { navConfig } from "@/config/nav"
 import { siteConfig } from "@/config/site"
+
+const navItems = {
+  collections: { title: "Collections", href: "/collections" },
+  mission: { title: "Our mission", href: "/mission" },
+  events: { title: "Events", href: "/events" }
+}
+
+const linkStyles =
+  "rounded-full border border-bone p-[13px] px-10 text-bone font-medium text-sm transition-colors hover:bg-bone hover:text-heavyMetal"
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false)
@@ -16,44 +22,36 @@ export default function Header() {
     <motion.header
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="px-4 py-4 sm:px-6"
+      className="p-[10px]"
     >
-      <div className="mx-auto max-w-7xl">
-        <div className="flex items-center justify-between rounded-full border border-primary/20 p-[3px]">
-          <div className="flex gap-1">
-            <Link href={siteConfig.path}>
-              <Button
-                variant="ghost"
-                className="rounded-full bg-primary/10 px-28"
-              >
-                {siteConfig.name}
-              </Button>
+      <div className="mx-auto max-w-[1420px]">
+        <div className="border-bone flex items-center justify-between gap-[2px] rounded-full border p-[3px]">
+          <div className="flex w-full gap-1">
+            <Link
+              href={siteConfig.path}
+              className={`${linkStyles} bg-birch !border-birch w-full text-center lg:max-w-sm`}
+            >
+              {siteConfig.name}
             </Link>
-            <div className="hidden gap-[2px] lg:flex">
-              {Object.entries(navConfig).map(([key, { title, path }]) => (
-                <Link key={key} href={path}>
-                  <Button variant="ghost" className="rounded-full">
-                    {title}
-                  </Button>
+            <div className="hidden w-full gap-[2px] lg:flex">
+              {Object.entries(navItems).map(([key, { title, href }]) => (
+                <Link key={key} href={href} className={linkStyles}>
+                  {title}
                 </Link>
               ))}
             </div>
           </div>
-          <Link href="/contact" className="hidden md:block">
-            <Button variant="ghost" className="rounded-full">
-              Contact now
-            </Button>
+          <Link href="/contact" className={`${linkStyles} hidden md:block`}>
+            Contact&nbsp;now
           </Link>
-          <Button
-            variant="ghost"
-            size="icon"
-            className="rounded-full md:hidden"
+          <div
             onClick={() => setIsOpen(!isOpen)}
+            className={`${linkStyles} md:hidden`}
             aria-label="Toggle menu"
             aria-expanded={isOpen}
           >
-            {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </Button>
+            {isOpen ? <p>Close</p> : <p>Menu</p>}
+          </div>
         </div>
       </div>
       <AnimatePresence>
@@ -62,25 +60,24 @@ export default function Header() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="mt-2 overflow-hidden rounded-3xl border border-primary/20 bg-background md:hidden"
+            className="border-bone mt-2 overflow-hidden rounded-3xl border md:hidden"
           >
-            {Object.entries(navConfig).map(([key, { title, path }]) => (
-              <Link key={key} href={path} onClick={() => setIsOpen(false)}>
-                <Button
-                  variant="ghost"
-                  className="w-full justify-start rounded-none"
-                >
-                  {title}
-                </Button>
+            {Object.entries(navItems).map(([key, { title, href }]) => (
+              <Link
+                key={key}
+                href={href}
+                className="text-bone hover:bg-bone hover:text-heavyMetal block p-4 font-medium transition-colors"
+                onClick={() => setIsOpen(false)}
+              >
+                {title}
               </Link>
             ))}
-            <Link href="/contact" onClick={() => setIsOpen(false)}>
-              <Button
-                variant="ghost"
-                className="w-full justify-start rounded-none"
-              >
-                Contact now
-              </Button>
+            <Link
+              href="/contact"
+              className="text-bone hover:bg-bone hover:text-heavyMetal block p-4 font-medium transition-colors"
+              onClick={() => setIsOpen(false)}
+            >
+              Contact now
             </Link>
           </motion.div>
         )}
