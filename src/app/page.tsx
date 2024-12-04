@@ -1,7 +1,9 @@
+import Container from "@/components/layout/container"
+
 export default function Home() {
   return (
-    <>
-      <div className="">Home</div>
-    </>
+    <Container>
+      <div>Home</div>
+    </Container>
   )
 }
