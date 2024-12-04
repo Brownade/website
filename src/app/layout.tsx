@@ -1,9 +1,11 @@
 import type { Metadata } from "next"
 import localFont from "next/font/local"
 
+import Footer from "@/components/layout/footer"
 import Header from "@/components/layout/header"
 import { ThemeProvider } from "@/components/theme-provider"
 import { SiteProvider } from "@/hooks/use-context"
+
 import "@/styles/colors.css"
 import "@/styles/globals.css"
 
@@ -42,6 +44,7 @@ export default function RootLayout({
           <SiteProvider>
             <Header />
             {children}
+            <Footer />
           </SiteProvider>
         </ThemeProvider>
       </body>
