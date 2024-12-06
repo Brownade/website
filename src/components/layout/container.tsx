@@ -7,7 +7,7 @@ interface ContainerProps {
 
 export default function Container(props: ContainerProps) {
   return (
-    <div className="p-[10px]">
+    <div className="px-[10px]">
       <div
         className={cn("mx-auto flex w-full max-w-[1420px]", props.className)}
       >
