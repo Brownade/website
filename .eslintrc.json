@@ -1,8 +1,5 @@
 {
-  "extends": [
-    "next/core-web-vitals",
-    "next/typescript"
-  ],
+  "extends": ["next/core-web-vitals", "next/typescript", "plugin:tailwindcss/recommended"],
   "rules": {
     "import/no-duplicates": "error",
     "import/order": [
@@ -16,7 +13,6 @@
         ],
         "newlines-between": "always",
         "alphabetize": {
-          // FYI: Commented out because it's not working as expected
           // "order": "asc",
           "caseInsensitive": true
         }

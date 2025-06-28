@@ -26,7 +26,7 @@ export default function OptionArtWorkCard({
 }: OptionArtWorkCardProps) {
   function RenderTitle() {
     return (
-      <div className="font-serif text-3xl font-bold text-birch">
+      <div className="text-birch font-serif text-3xl font-bold">
         {title}
         {subtitle && (
           <>
@@ -42,7 +42,7 @@ export default function OptionArtWorkCard({
     return (
       image && (
         <div
-          className={`relative ${option === 1 ? "h-[560px]" : "h-48"} overflow-hidden rounded-lg`}
+          className={`relative ${option === 1 ? "h-[460px]" : "h-48"} overflow-hidden rounded-lg`}
         >
           <Image src={image} alt={title} layout="fill" objectFit="cover" />
         </div>
@@ -53,7 +53,7 @@ export default function OptionArtWorkCard({
   function RenderMetadata() {
     return (
       metadata && (
-        <p className="text-sm leading-relaxed text-heavyMetal">{metadata}</p>
+        <p className="text-heavyMetal text-sm leading-relaxed">{metadata}</p>
       )
     )
   }
@@ -87,7 +87,7 @@ export default function OptionArtWorkCard({
               {RenderTitle()}
               <div className="flex justify-center">
                 {[...Array(3)].map((_, i) => (
-                  <div key={i} className="size-8 rounded-full bg-saddle" />
+                  <div key={i} className="bg-saddle size-8 rounded-full" />
                 ))}
               </div>
             </div>
@@ -110,11 +110,11 @@ export default function OptionArtWorkCard({
             <div className="grid min-h-40 content-between">
               {RenderMetadata()}
               <div>
-                <div className="flex items-center justify-between border-t-2 border-heavyMetal py-3 text-sm text-heavyMetal">
+                <div className="border-heavyMetal text-heavyMetal flex items-center justify-between border-t-2 py-3 text-sm">
                   <span>PUBLIC DOMAIN</span>
                   <Link
                     href={siteConfig.url}
-                    className="cursor-pointer font-semibold hover:text-bone hover:underline"
+                    className="hover:text-bone cursor-pointer font-semibold hover:underline"
                   >
                     BRWONADE.COM
                   </Link>

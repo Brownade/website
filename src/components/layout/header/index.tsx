@@ -6,6 +6,7 @@ import { useState } from "react"
 
 import { navConfig } from "@/config/nav"
 import { siteConfig } from "@/config/site"
+import { paths } from "@/constants/paths"
 
 const linkStyles =
   "rounded-full border border-bone p-[13px] px-10 text-bone font-medium text-sm transition-colors hover:bg-bone hover:text-heavyMetal"
@@ -24,7 +25,7 @@ export default function Header() {
           <div className="flex w-full gap-1">
             <Link
               href={siteConfig.href}
-              className={`${linkStyles} bg-birch !border-birch w-full text-center lg:max-w-sm`}
+              className={`${linkStyles} !border-birch bg-birch w-full text-center lg:max-w-sm`}
             >
               {siteConfig.name}
             </Link>
@@ -38,8 +39,8 @@ export default function Header() {
               )}
             </div>
           </div>
-          <Link href="/contact" className={`${linkStyles} hidden md:block`}>
-            Contact&nbsp;now
+          <Link href={paths.faq} className={`${linkStyles} hidden md:block`}>
+            FAQ?
           </Link>
           <div
             onClick={() => setIsOpen(!isOpen)}
@@ -70,11 +71,11 @@ export default function Header() {
               </Link>
             ))}
             <Link
-              href="/contact"
+              href={paths.faq}
               className="text-bone hover:bg-bone hover:text-heavyMetal block p-4 font-medium transition-colors"
               onClick={() => setIsOpen(false)}
             >
-              Contact now
+              FAQ?
             </Link>
           </motion.div>
         )}

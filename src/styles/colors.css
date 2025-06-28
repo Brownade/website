@@ -1,20 +1,17 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-@layer base {
-  :root {
-    --pale-oyster: #9d8e73;
-    --heavy-metal: #1a1c19;
-    --birch: #343124;
-    --zeus: ##25221d;
-    --bone: #e3d4c4;
-    --saddle: #4c3727;
-    --kabul: #584e3f;
-    --vanilla: #cec0a4;
-    --tobacco-brown: #755740;
-    --quincy: #61462a;
-    --fiord: #385464;
-    --clay-ash: #c4ccb4;
-  }
+@theme {
+  --color-pale-oyster: #9d8e73;
+  --color-heavy-metal: #1a1c19;
+  --color-birch: #343124;
+  --color-zeus: #25221d;
+  --color-bone: #e3d4c4;
+  --color-saddle: #4c3727;
+  --color-kabul: #584e3f;
+  --color-vanilla: #cec0a4;
+  --color-tobacco-brown: #755740;
+  --color-quincy: #61462a;
+  --color-fiord: #385464;
+  --color-clay-ash: #c4ccb4;
+  --color-persian-orange: #c48d6f;
 }
