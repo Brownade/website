@@ -1,6 +1,8 @@
 import { ThemeProvider } from "@/components/theme-provider"
 import { geistMono, geistSans } from "@/fonts"
 import { SiteProvider } from "@/hooks/use-context"
+import { Analytics } from "@vercel/analytics/react"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import type { Metadata } from "next"
 
 import "@/styles/colors.css"
@@ -28,6 +30,8 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <SiteProvider>{children}</SiteProvider>
+          <Analytics />
+          <SpeedInsights />
         </ThemeProvider>
       </body>
     </html>
