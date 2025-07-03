@@ -1,9 +1,12 @@
-import { Hero } from "@/app/_components/hero"
 import { Announcement } from "@/components/announcement"
 import Header from "@/components/layout/header"
 import Image from "next/image"
 
-export default function Page() {
+export default async function Layout({
+  children
+}: {
+  children: React.ReactNode
+}) {
   return (
     <div className="relative min-h-screen overflow-hidden">
       <div className="absolute inset-0">
@@ -20,8 +23,7 @@ export default function Page() {
       <div className="relative z-10 flex min-h-screen flex-col backdrop-blur-sm">
         <Announcement />
         <Header />
-
-        <Hero />
+        {children}
       </div>
     </div>
   )

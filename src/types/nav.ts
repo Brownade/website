@@ -1,11 +1,14 @@
-import { Icons } from "@/components/icons"
+import { LucideProps } from "lucide-react"
+import { ForwardRefExoticComponent, RefAttributes } from "react"
 
 export interface NavItem {
   title: string
-  href?: string
+  href: string
   disabled?: boolean
   external?: boolean
-  icon?: keyof typeof Icons
+  icon: ForwardRefExoticComponent<
+    Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>
+  >
   label?: string
 }
 
