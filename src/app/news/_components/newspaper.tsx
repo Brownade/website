@@ -8,7 +8,7 @@ import Image from "next/image"
 export default function Newspaper() {
   const news = [
     {
-      title: "Lunch of the Brownade Newspaper",
+      title: "Launch of the Brownade Newspaper",
       writter: "Brownade Team",
       country: "IN",
       duration: "00:10",
@@ -33,7 +33,7 @@ export default function Newspaper() {
         </header>
 
         <section className="border px-4 py-16">
-          <h2 className="text-6xl leading-tight font-light tracking-wider md:text-8xl">
+          <h2 className="text-5xl leading-tight font-light tracking-wider md:text-8xl">
             THE NEWSPAPERS
             <br />
             OF BROWNADE
