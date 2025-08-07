@@ -19,15 +19,15 @@ export default function NotFound() {
             <Link href={paths.home}>
               <span className="text-black dark:text-white">
                 {" "}
-                doesn't exist.{" "}
+                doesn&apos;t exist.{" "}
               </span>{" "}
               <span className="mr-2">
                 <ButtonArrowIconDemo text="" clickable />
               </span>
             </Link>
             <span>
-              Either the internet has broken or we couldn't find the file that
-              you were looking for.
+              Either the internet has broken or we couldn&apos;t find the file
+              that you were looking for.
             </span>
           </div>
         </div>

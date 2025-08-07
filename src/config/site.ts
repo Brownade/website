@@ -13,19 +13,5 @@ export const siteConfig = {
     email: "info@brownade.com",
     address: "Bangkok, Thailand",
     phone: ""
-  },
-  ceo: {
-    username: "nopnapatn",
-    name: "Nopnapat Norasri",
-    image: "",
-    title: "CEO",
-    email: "nopnapatn@gmail.com",
-    quote:
-      "We are on a mission to create digital experiences that inspire transformation.",
-    link: {
-      x: "https://x.com/nopnapatn",
-      github: "https://github.com/nopnapatn",
-      linkedin: "https://www.linkedin.com/in/nopnapatn/"
-    }
   }
 }
