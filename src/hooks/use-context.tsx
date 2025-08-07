@@ -1,5 +1,7 @@
 "use client"
 
+import FooterDemo from "@/components/layout/footer"
+import HeaderDemo from "@/components/layout/header"
 import { createContext, ReactNode, useContext, useState } from "react"
 
 interface SiteContextType {
@@ -21,7 +23,9 @@ export function SiteProvider({ children }: { children: ReactNode }) {
   return (
     <SiteContext.Provider value={{ root }}>
       <RefContext.Provider value={{ isInteresting, setIsInteresting }}>
+        <HeaderDemo />
         {children}
+        <FooterDemo />
       </RefContext.Provider>
     </SiteContext.Provider>
   )
