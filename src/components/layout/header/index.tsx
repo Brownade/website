@@ -8,7 +8,6 @@ import Link from "next/link"
 import { CommandMenuDemo } from "@/components/layout/header/command-menu"
 import { MobileNavigationMenuDemo } from "@/components/layout/header/mobile-navigation-menu"
 import { NavigationMenuDemo } from "@/components/layout/header/navigation-menu"
-import { Panda } from "lucide-react"
 
 export default function HeaderDemo() {
   return (
@@ -17,7 +16,6 @@ export default function HeaderDemo() {
         href={paths.home}
         className="hidden font-bold hover:cursor-pointer lg:block"
       >
-        <Panda className="mr-2 inline-block size-4" />
         {siteConfig.name}
       </Link>
       <MobileNavigationMenuDemo

@@ -35,7 +35,7 @@ export const navConfig: NavConfig = {
       icon: Home
     },
     {
-      title: "Contact",
+      title: "Contact us",
       href: paths.contact,
       icon: Home
     }

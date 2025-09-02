@@ -1,4 +1,4 @@
-import { dataAvatarDemo } from "@/lib/data"
+import { dataAvatarDemo } from "@/lib/mock-data"
 
 export const dataListCardDemo = {
   service: [
@@ -24,4 +24,9 @@ export const dataListCardDemo = {
       avatarFallback: dataAvatarDemo.fallback
     }
   ]
+}
+
+export const dataMapDemo = {
+  imageUrl: "/mocks/map.jpg",
+  imageAlt: "Map location"
 }

@@ -71,7 +71,7 @@ export function CarouselDemo(props: CarouselDemoProps) {
                     <Label className="mb-16 max-w-lg text-lg leading-relaxed text-white/90 md:text-xl">
                       {carousel.description}
                     </Label>
-                    <div className="">
+                    <div>
                       <Button
                         variant="secondary"
                         size="lg"
