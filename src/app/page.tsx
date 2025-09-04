@@ -3,9 +3,8 @@ import ContainerDemo from "@/components/layout/container"
 
 import { CardClickDemo } from "@/app/_components/cards"
 import { ButtonArrowIconDemo } from "@/components/framer-motion/button"
-import { dataListCardDemo } from "@/constants/data"
+import { dataListCardDemo, dataListCarouselDemo } from "@/constants/data"
 import { paths } from "@/constants/paths"
-import { dataListCarouselDemo } from "@/lib/mock-data"
 import Link from "next/link"
 
 export default function Page() {

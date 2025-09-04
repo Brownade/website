@@ -13,7 +13,12 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle
 } from "@/components/ui/navigation-menu"
-import { listPathsInNavigation, paths } from "@/constants/paths"
+import {
+  listHomePathsInNavigation,
+  listServicesPathsInNavigation,
+  listShopsPathsInNavigation,
+  paths
+} from "@/constants/paths"
 
 export function NavigationMenuDemo() {
   return (
@@ -38,17 +43,11 @@ export function NavigationMenuDemo() {
                   </Link>
                 </NavigationMenuLink>
               </li>
-              <ListItem href="" title="Introduction">
-                Explore the Brownade documentation to get started with our
-                components and utilities.
-              </ListItem>
-              <ListItem href="" title="Get the App">
-                Learn how to install and set up the Brownade app on your device.
-              </ListItem>
-              <ListItem href="" title="Our Mission">
-                Discover our mission to create a better digital experience for
-                everyone.
-              </ListItem>
+              {listHomePathsInNavigation.map((path) => (
+                <ListItem key={path.title} title={path.title} href={path.href}>
+                  {path.description}
+                </ListItem>
+              ))}
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
@@ -56,7 +55,7 @@ export function NavigationMenuDemo() {
           <NavigationMenuTrigger>Shops</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid w-[400px] gap-2 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-              {listPathsInNavigation.map((path) => (
+              {listShopsPathsInNavigation.map((path) => (
                 <ListItem key={path.title} title={path.title} href={path.href}>
                   {path.description}
                 </ListItem>
@@ -66,39 +65,18 @@ export function NavigationMenuDemo() {
         </NavigationMenuItem>
         <NavigationMenuItem>
           <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-            <Link href={paths.news}>News</Link>
+            <Link href={paths.blogs}>Blogs</Link>
           </NavigationMenuLink>
         </NavigationMenuItem>
         <NavigationMenuItem>
           <NavigationMenuTrigger>Services</NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className="grid w-[300px] gap-4">
-              <li>
-                <NavigationMenuLink asChild>
-                  <Link href="">
-                    <div className="font-medium">Lorem ipsum</div>
-                    <div className="text-muted-foreground">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    </div>
-                  </Link>
-                </NavigationMenuLink>
-                <NavigationMenuLink asChild>
-                  <Link href="">
-                    <div className="font-medium">Dolor Sit Amet</div>
-                    <div className="text-muted-foreground">
-                      Consectetur adipiscing elit.
-                    </div>
-                  </Link>
-                </NavigationMenuLink>
-                <NavigationMenuLink asChild>
-                  <Link href="">
-                    <div className="font-medium">Consectetur Adipiscing</div>
-                    <div className="text-muted-foreground">
-                      Ut enim ad minim veniam.
-                    </div>
-                  </Link>
-                </NavigationMenuLink>
-              </li>
+            <ul className="grid w-[400px] gap-2 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+              {listServicesPathsInNavigation.map((path) => (
+                <ListItem key={path.title} title={path.title} href={path.href}>
+                  {path.description}
+                </ListItem>
+              ))}
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>

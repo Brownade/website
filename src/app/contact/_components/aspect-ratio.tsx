@@ -1,6 +1,6 @@
 "use client"
 
-import { AspectRatio } from "@radix-ui/react-aspect-ratio"
+import { AspectRatio } from "@/components/ui/aspect-ratio"
 import Image from "next/image"
 
 interface AspectRatioDemoProps {
@@ -8,7 +8,7 @@ interface AspectRatioDemoProps {
   imageAlt: string
 }
 
-export default function AspectRatioDemo(props: AspectRatioDemoProps) {
+export function AspectRatioDemo(props: AspectRatioDemoProps) {
   return (
     <AspectRatio ratio={21 / 9}>
       <Image

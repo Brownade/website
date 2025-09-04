@@ -1,4 +1,6 @@
+import { AspectRatioDemo } from "@/app/contact/_components/aspect-ratio"
 import { CardDemo } from "@/components/card"
+import { ButtonArrowIconDemo } from "@/components/framer-motion/button"
 import ContainerDemo from "@/components/layout/container"
 import {
   CardAction,
@@ -7,12 +9,10 @@ import {
   CardHeader
 } from "@/components/ui/card"
 import { siteConfig } from "@/config/site"
+import { dataMapDemo } from "@/constants/data"
 import { iconSize } from "@/constants/variants"
 import { House, Mailbox, Map } from "lucide-react"
 import Link from "next/link"
-import { ButtonArrowIconDemo } from "../../components/framer-motion/button"
-import { dataMapDemo } from "../../constants/data"
-import AspectRatioDemo from "./_components/aspect-ratio"
 
 export default function Page() {
   return (
@@ -20,10 +20,10 @@ export default function Page() {
       <div className="grid grid-cols-1 items-start gap-4 lg:grid-cols-5">
         <div className=""></div>
 
-        <div className="lg:col-span-4 lg:space-y-8">
+        <div className="lg:col-span-4">
           <CardDemo>
             <CardHeader className="text-xl sm:text-4xl">
-              Contact us
+              <span>Contact us</span>
               <CardAction>
                 <Link href={`mailto:${siteConfig.contact.email}`}>
                   <ButtonArrowIconDemo clickable />
