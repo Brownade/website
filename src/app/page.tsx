@@ -3,8 +3,8 @@ import ContainerDemo from "@/components/layout/container"
 
 import { CardClickDemo } from "@/app/_components/cards"
 import { ButtonArrowIconDemo } from "@/components/framer-motion/button"
-import { dataListCardDemo } from "@/constants/data"
-import { dataListCarouselDemo } from "@/lib/data"
+import { dataListCardDemo, dataListCarouselDemo } from "@/constants/data"
+import { paths } from "@/constants/paths"
 import Link from "next/link"
 
 export default function Page() {
@@ -19,7 +19,7 @@ export default function Page() {
           <CarouselDemo listCarouselDemo={dataListCarouselDemo} />
           <div className="grid grid-cols-1 items-start gap-2 pt-8 lg:grid-cols-5">
             <div className="lg:col-span-2">
-              <Link href="/services">
+              <Link href={paths.services}>
                 <ButtonArrowIconDemo text="Services" clickable />
               </Link>
             </div>

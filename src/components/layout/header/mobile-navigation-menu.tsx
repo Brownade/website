@@ -1,21 +1,24 @@
 "use client"
 
-import Link, { LinkProps } from "next/link"
-import { useRouter } from "next/navigation"
-
 import { Button } from "@/components/ui/button"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger
 } from "@/components/ui/popover"
+import { showMcpDocs } from "@/lib/flags"
+import { source } from "@/lib/source"
 import { cn } from "@/lib/utils"
+import Link, { LinkProps } from "next/link"
+import { useRouter } from "next/navigation"
 import { ReactNode, useState } from "react"
 
 export function MobileNavigationMenuDemo({
+  tree,
   items,
   className
 }: {
+  tree?: typeof source.pageTree
   items: { href: string; label: string }[]
   className?: string
 }) {
@@ -73,7 +76,37 @@ export function MobileNavigationMenuDemo({
               ))}
             </div>
           </div>
-          <div className="flex flex-col gap-8"></div>
+          <div className="flex flex-col gap-8">
+            {tree?.children?.map((group, index) => {
+              if (group.type === "folder") {
+                return (
+                  <div key={index} className="flex flex-col gap-4">
+                    <div className="text-muted-foreground text-sm font-medium">
+                      {group.name}
+                    </div>
+                    <div className="flex flex-col gap-3">
+                      {group.children.map((item) => {
+                        if (item.type === "page") {
+                          if (!showMcpDocs && item.url.includes("/mcp")) {
+                            return null
+                          }
+                          return (
+                            <MobileLink
+                              key={`${item.url}-${index}`}
+                              href={item.url}
+                              onOpenChange={setOpen}
+                            >
+                              {item.name}
+                            </MobileLink>
+                          )
+                        }
+                      })}
+                    </div>
+                  </div>
+                )
+              }
+            })}
+          </div>
         </div>
       </PopoverContent>
     </Popover>

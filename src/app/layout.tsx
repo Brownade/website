@@ -1,7 +1,10 @@
+import FooterDemo from "@/components/layout/footer"
+import HeaderDemo from "@/components/layout/header"
 import { ThemeProvider } from "@/components/theme-provider"
 import { siteConfig } from "@/config/site"
 import { geistMono, geistSans } from "@/fonts"
 import { SiteProvider } from "@/hooks/use-context"
+import { META_THEME_COLORS } from "@/hooks/use-meta-color"
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import type { Metadata } from "next"
@@ -63,8 +66,25 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              try {
+                if (localStorage.theme === 'dark' || ((!('theme' in localStorage) || localStorage.theme === 'system') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                  document.querySelector('meta[name="theme-color"]').setAttribute('content', '${META_THEME_COLORS.light}')
+                }
+                if (localStorage.layout) {
+                  document.documentElement.classList.add('layout-' + localStorage.layout)
+                }
+              } catch (_) {}
+            `
+          }}
+        />
+        <meta name="theme-color" content={META_THEME_COLORS.dark} />
+      </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} text-foreground group/body overscroll-none font-sans antialiased [--footer-height:calc(var(--spacing)*14)] [--header-height:calc(var(--spacing)*14)] xl:[--footer-height:calc(var(--spacing)*24)]`}
       >
         <ThemeProvider
           attribute="class"
@@ -72,7 +92,11 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <SiteProvider>{children}</SiteProvider>
+          <SiteProvider>
+            <HeaderDemo />
+            {children}
+            <FooterDemo />
+          </SiteProvider>
           <Analytics />
           <SpeedInsights />
         </ThemeProvider>

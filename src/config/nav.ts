@@ -20,8 +20,8 @@ export const navConfig: NavConfig = {
       icon: Home
     },
     {
-      title: "News",
-      href: paths.news,
+      title: "Blogs",
+      href: paths.blogs,
       icon: Home
     },
     {
@@ -35,7 +35,7 @@ export const navConfig: NavConfig = {
       icon: Home
     },
     {
-      title: "Contact",
+      title: "Contact us",
       href: paths.contact,
       icon: Home
     }

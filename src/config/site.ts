@@ -6,7 +6,7 @@ export const siteConfig = {
     "Brownade is a digital experience that inspires transformation. We create digital products and experiences that help businesses grow and succeed in the digital world.",
   links: {
     url: "https://brownade.com",
-    image: "",
+    image: "https://github.com/brownade.png",
     github: "https://github.com/Brownade"
   },
   contact: {
