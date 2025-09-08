@@ -1,3 +1,5 @@
+import FooterDemo from "@/components/layout/footer"
+import HeaderDemo from "@/components/layout/header"
 import { ThemeProvider } from "@/components/theme-provider"
 import { siteConfig } from "@/config/site"
 import { geistMono, geistSans } from "@/fonts"
@@ -90,7 +92,11 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <SiteProvider>{children}</SiteProvider>
+          <SiteProvider>
+            <HeaderDemo />
+            {children}
+            <FooterDemo />
+          </SiteProvider>
           <Analytics />
           <SpeedInsights />
         </ThemeProvider>

@@ -25,13 +25,17 @@ import { Separator } from "@/components/ui/separator"
 
 import { useIsMac } from "@/hooks/use-is-mac"
 import { useMutationObserver } from "@/hooks/use-mutation-observer"
+import { showMcpDocs } from "@/lib/flags"
+import { source } from "@/lib/source"
 import { cn } from "@/lib/utils"
 import { ComponentProps, useCallback, useEffect, useRef, useState } from "react"
 
 export function CommandMenuDemo({
+  tree,
   navItems,
   ...props
 }: DialogProps & {
+  tree: typeof source.pageTree
   navItems?: { href: string; label: string }[]
 }) {
   const router = useRouter()
@@ -45,6 +49,18 @@ export function CommandMenuDemo({
     setOpen(false)
     command()
   }, [])
+
+  const handlePageHighlight = useCallback(
+    (isComponent: boolean) => {
+      if (isComponent) {
+        setSelectedType("component")
+      } else {
+        setSelectedType("page")
+        setCopyPayload("")
+      }
+    },
+    [setSelectedType, setCopyPayload]
+  )
 
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -133,6 +149,48 @@ export function CommandMenuDemo({
                 ))}
               </CommandGroup>
             )}
+            {tree.children.map((group) => (
+              <CommandGroup
+                key={group.$id}
+                heading={group.name}
+                className="!p-0 [&_[cmdk-group-heading]]:scroll-mt-16 [&_[cmdk-group-heading]]:!p-3 [&_[cmdk-group-heading]]:!pb-1"
+              >
+                {group.type === "folder" &&
+                  group.children.map((item) => {
+                    if (item.type === "page") {
+                      const isComponent = item.url.includes("/components/")
+
+                      if (!showMcpDocs && item.url.includes("/mcp")) {
+                        return null
+                      }
+
+                      return (
+                        <CommandMenuItem
+                          key={item.url}
+                          value={
+                            item.name?.toString()
+                              ? `${group.name} ${item.name}`
+                              : ""
+                          }
+                          keywords={isComponent ? ["component"] : undefined}
+                          onHighlight={() => handlePageHighlight(isComponent)}
+                          onSelect={() => {
+                            runCommand(() => router.push(item.url))
+                          }}
+                        >
+                          {isComponent ? (
+                            <div className="border-muted-foreground aspect-square size-4 rounded-full border border-dashed" />
+                          ) : (
+                            <ArrowRight />
+                          )}
+                          {item.name}
+                        </CommandMenuItem>
+                      )
+                    }
+                    return null
+                  })}
+              </CommandGroup>
+            ))}
           </CommandList>
         </Command>
         <div className="text-muted-foreground absolute inset-x-0 bottom-0 z-20 flex h-10 items-center gap-2 rounded-b-xl border-t border-t-neutral-100 bg-neutral-50 px-4 text-xs font-medium dark:border-t-neutral-700 dark:bg-neutral-800">

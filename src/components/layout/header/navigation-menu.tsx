@@ -86,10 +86,12 @@ export function NavigationMenuDemo() {
             <ul className="grid w-[200px] gap-4">
               <li>
                 <NavigationMenuLink asChild>
-                  <Link href="#">Life @Brownade</Link>
+                  <Link href={`${paths.blogs}/life-at-brownade`}>
+                    Life @Brownade
+                  </Link>
                 </NavigationMenuLink>
                 <NavigationMenuLink asChild>
-                  <Link href="#">Jobs opening</Link>
+                  <Link href={paths.maintenance}>Jobs opening</Link>
                 </NavigationMenuLink>
               </li>
             </ul>
