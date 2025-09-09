@@ -1,7 +1,7 @@
+import { SidebarDemo } from "@/app/blogs/_components/sidebar"
+import { SidebarProvider } from "@/components/ui/sidebar"
 import { source } from "@/lib/source"
 import { ReactNode } from "react"
-import { SidebarProvider } from "../../components/ui/sidebar"
-import { SidebarDemo } from "./_components/sidebar"
 
 export default function DocsLayout({ children }: { children: ReactNode }) {
   return (
